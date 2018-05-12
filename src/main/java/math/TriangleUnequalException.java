@@ -8,9 +8,7 @@ package math;
  * 
  * @author bink81@gmail.com
  */
-public class TriangleUnequalException extends Exception {
-	private static final long serialVersionUID = 1L;
-
+class TriangleUnequalException extends Exception {
 	public TriangleUnequalException(String message) {
 		super(message);
 	}

@@ -11,7 +11,7 @@ import math.Triangle.Type;
  * 
  * @author bink81@gmail.com
  */
-public final class TriangleDemo {
+final class TriangleDemo {
 	public static void main(String[] args) {
 		printIntroductionMessage();
 		try (Scanner scanner = new Scanner(System.in)) {
@@ -34,7 +34,6 @@ public final class TriangleDemo {
 				if (value.compareTo(BigDecimal.ZERO) < 0) {
 					System.out.println("Error - the provided value is not positive, try again (or 0 to exit)");
 					value = null;
-					continue;
 				} else if (value.compareTo(BigDecimal.ZERO) == 0) {
 					System.out.println("User abort detected");
 					printExitMessage();

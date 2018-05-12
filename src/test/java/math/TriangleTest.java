@@ -63,7 +63,7 @@ public class TriangleTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void givenSideBNegativeThenFailConstruction() throws Exception {
-		new Triangle(ONE, invertSign(ONE), ONE);
+		new Triangle(ONE, invertSign(TWO), ONE);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -111,7 +111,11 @@ public class TriangleTest {
 	// 5. Check method determineType()
 	@Test
 	public void givenUnequalSidesThenTypeIsScalene() throws Exception {
-		Assert.assertEquals(Triangle.Type.SCALENE, new Triangle(THREE, FOUR, FIVE).determineType());
+		Triangle triangle = new Triangle(THREE, FOUR, FIVE);
+		Assert.assertEquals(THREE, triangle.getSideA());
+		Assert.assertEquals(FOUR, triangle.getSideB());
+		Assert.assertEquals(FIVE, triangle.getSideC());
+		Assert.assertEquals(Triangle.Type.SCALENE, triangle.determineType());
 		Assert.assertEquals(Triangle.Type.SCALENE,
 				new Triangle(ONE, new BigDecimal("1.0000000000000000000000000000001"), TWO).determineType());
 		Assert.assertEquals(Triangle.Type.SCALENE, new Triangle(new BigDecimal("91E+1000000000"),

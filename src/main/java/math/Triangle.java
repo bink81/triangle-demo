@@ -16,7 +16,7 @@ public final class Triangle {
 	// prevent inaccuracies.
 	private final BigDecimal sideA, sideB, sideC;
 
-	public enum Type {
+	protected enum Type {
 		/**
 		 * An equilateral triangle is a triangle in which all three sides are
 		 * equal.
@@ -56,7 +56,7 @@ public final class Triangle {
 		Preconditions.checkArgument(sideA.compareTo(BigDecimal.ZERO) > 0, "sideA must be positive");
 		Preconditions.checkArgument(sideB.compareTo(BigDecimal.ZERO) > 0, "sideB must be positive");
 		Preconditions.checkArgument(sideC.compareTo(BigDecimal.ZERO) > 0, "sideC must be positive");
-		Preconditions.checkArgument(!isInequal(sideA, sideB, sideC));
+		checkValidity(sideA, sideB, sideC);
 		this.sideA = sideA;
 		this.sideB = sideB;
 		this.sideC = sideC;
@@ -66,7 +66,7 @@ public final class Triangle {
 	 * Check if a triangle is unequal (a side is bigger or equals than the sum
 	 * of the remaining two).
 	 */
-	private boolean isInequal(final BigDecimal side1, final BigDecimal side2, final BigDecimal side3)
+	private void checkValidity(final BigDecimal side1, final BigDecimal side2, final BigDecimal side3)
 			throws TriangleUnequalException {
 		if (side1.compareTo(side3.add(side2)) >= 0) {
 			throw new TriangleUnequalException(side1 + " is too big");
@@ -77,7 +77,6 @@ public final class Triangle {
 		if (side3.compareTo(side1.add(side2)) >= 0) {
 			throw new TriangleUnequalException(side3 + " is too big");
 		}
-		return false;
 	}
 
 	/**
@@ -87,11 +86,11 @@ public final class Triangle {
 	 *         {@link Type#ISOSCELES} or {@link Type#SCALENE})
 	 */
 	public Type determineType() {
-		boolean equalAandB = areEqual(sideA, sideB);
-		boolean equalBandC = areEqual(sideB, sideC);
-		if (equalAandB && equalBandC) {
+		boolean areSidesABEqual = areEqual(sideA, sideB);
+		boolean areSidesBCEqual = areEqual(sideB, sideC);
+		if (areSidesABEqual && areSidesBCEqual) {
 			return Type.EQUILATERAL;
-		} else if (equalAandB || equalBandC || areEqual(sideA, sideC)) {
+		} else if (areSidesABEqual || areSidesBCEqual || areEqual(sideA, sideC)) {
 			return Type.ISOSCELES;
 		}
 		return Type.SCALENE;
@@ -130,9 +129,7 @@ public final class Triangle {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Triangle [sideA=").append(sideA).append(", sideB=").append(sideB).append(", sideC=")
-				.append(sideC).append("]");
-		return builder.toString();
+		return "Triangle [sideA=" + sideA + ", sideB=" + sideB + ", sideC=" +
+				sideC + "]";
 	}
 }
