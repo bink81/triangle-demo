@@ -49,22 +49,22 @@ final class TriangleDemo {
 	private static void printIntroductionMessage() {
 		System.out.println(
 				"This program reads three sides of a triangle and determines whether it's equilateral, isosceles, scalene or invalid.");
-		System.out.println("");
+		System.out.println();
 	}
 
 	private static void printTriangleType(final Type type) {
-		System.out.println("");
+		System.out.println();
 		System.out.println("This triangle is " + type);
 	}
 
 	private static void printExceptionMessage(final String message) {
-		System.out.println("");
+		System.out.println();
 		System.out.println("Error - the provided values do not form a valid triangle (best guess: " + message + ").");
 	}
 
 	private static void printExitMessage() {
-		System.out.println("");
+		System.out.println();
 		System.out.print("Exiting...");
-		System.out.println("");
+		System.out.println();
 	}
 }
