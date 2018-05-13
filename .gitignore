@@ -12,3 +12,13 @@ buildNumber.properties
 !/.mvn/wrapper/maven-wrapper.jar
 /.classpath
 /.project
+
+
+# idea files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/misc.xml
